@@ -2,19 +2,20 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { AlertComponent, PaymentModule } from './features';
-import { PaymentService } from './services';
+import { PaymentModule } from './features';
+
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AlertComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
+    FontAwesomeModule,
     PaymentModule
   ],
-  providers: [PaymentService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
