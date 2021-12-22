@@ -1,1 +1,64 @@
-<p>payment-plan works!</p>
+<div class="card highlight-card" >
+    <div class="card-header">
+      Payment Plan
+    </div>
+    <div class="card-body">
+      <form [formGroup]="paymentPlanForm">
+        <div class="form-group">
+          <label for="mortgage-amount" class="col-md-5">
+            <fa-icon [icon]="faQuestionCircle" (click)="mortgageAmountInfo.show()"></fa-icon>Mortgage Amount: </label>
+          <div class="input-group p-0 col-md-7">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="dollar-sign">$</span>
+            </div>
+            <input id="mortgage-amount" class="form-control" type="text" formControlName="mortgageAmount" required>
+          </div>
+        </div>
+        <app-alert #mortgageAmountInfo type="info" alert="{{INFO_MORTGAGE_AMOUNT}}" name="mortgage-amount-info"></app-alert>
+        <app-alert #mortgageAmountError [display]="mortgageAmountErrorDisplay" type="danger" [alert]="mortgageAmountErrorMessage" name="mortgage-amount-danger"></app-alert>
+        <div class="form-group">
+          <label for="interest-rate" class="col-md-5">
+            <fa-icon [icon]="faQuestionCircle" (click)="interestRateInfo.show()"></fa-icon>Interest Rate: </label>
+          <div class="input-group p-0 col-md-7">
+            <input id="interest-rate" type="text" class="form-control" maxlength="8" formControlName="interestRate" required>
+            <div class="input-group-append">
+              <span class="input-group-text" id="percentage-sign">%</span>
+            </div>
+          </div>
+        </div>
+        <app-alert #interestRateInfo type="info" alert="{{INFO_INTEREST_RATE}}" name="interest-rate-info"></app-alert>
+        <app-alert #mortgageAmountError [display]="interestRateErrorDisplay" type="danger" [alert]="interestRateErrorMessage" name="mortgage-amount-danger"></app-alert>
+        <div class="form-group">
+          <label for="amortization-period" class="col-md-5">
+            <fa-icon [icon]="faQuestionCircle" (click)="amortizationPeriodInfo.show()"></fa-icon>Amortization Period: </label>
+          <select id="amortization-period-year" class="col-md-3" formControlName="amortizationPeriodYear" required>
+            <option [value]="0"></option>
+            <option *ngFor="let year of amortizationPeriodYears" [value]="year">{{year}} {{year === 1 ? 'Year' : 'Years'}}</option>
+          </select>
+          <select id="amortization-period-month" class="col-md-3 offset-md-1" formControlName="amortizationPeriodMonth">
+            <option [value]="0"></option>
+            <option *ngFor="let month of amortizationPeriodMonths" [value]="month">{{month}} {{month === 1 ? 'Month' : 'Months'}}</option>
+          </select>
+        </div>
+        <app-alert #amortizationPeriodInfo type="info" alert="{{INFO_AMORTIZATION_PERIOD}}" name="amortization-period-info"></app-alert>
+        <app-alert #mortgageAmountError [display]="amortizationPeriodErrorDisplay" type="danger" [alert]="amortizationPeriodErrorMessage" name="mortgage-amount-danger"></app-alert>
+        <div class="form-group">
+          <label for="payment-frequency" class="col-md-5">
+            <fa-icon [icon]="faQuestionCircle" (click)="paymentFrequencyInfo.show()"></fa-icon>Payment Frequency: </label>
+          <select id="payment-frequency" class="col-md-7" formControlName="paymentFrequency" required>
+            <option *ngFor="let frequency of paymentFrequencies" [value]="frequency">{{frequency}}</option>
+          </select>
+        </div>
+        <app-alert #paymentFrequencyInfo type="info" alert="{{INFO_PAYMENT_FREQUENCY}}" name="payment-frequency-info"></app-alert>
+        <div class="form-group">
+          <label for="payment-term" class="col-md-5">
+            <fa-icon [icon]="faQuestionCircle" (click)="paymentTermInfo.show()"></fa-icon>Term: </label>
+          <select id="payment-term" class="col-md-7" formControlName="paymentTerm" required>
+            <option *ngFor="let term of terms" [value]="term">{{term}} {{term === 1 ? 'Year' : 'Years'}}</option>
+          </select>
+        </div>
+        <app-alert #paymentTermInfo type="info" alert="{{INFO_PAYMENT_TERM}}" name="payment-term-info"></app-alert>
+        
+      </form>
+    </div>
+  </div>

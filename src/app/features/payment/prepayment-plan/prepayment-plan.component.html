@@ -1,1 +1,39 @@
-<p>prepayment-plan works!</p>
+<div class="card highlight-card" >
+    <div class="card-header">
+      Prepayment Plan
+    </div>
+    <div class="card-body">
+      <form [formGroup]="prepaymentPlanForm">
+        <div class="form-group">
+          <label for="prepayment-amount" class="col-md-5">
+            <fa-icon [icon]="faQuestionCircle" (click)="prepaymentAmountInfo.show()"></fa-icon>Prepayment Amount: </label>
+          <div class="input-group p-0 col-md-7">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="dollar-sign">$</span>
+            </div>
+            <input id="prepayment-amount" class="form-control" type="text" formControlName="prepaymentAmount" required>
+          </div>
+        </div>
+        <app-alert #prepaymentAmountInfo type="info" alert="{{INFO_PREPAYMENT_AMOUNT}}" name="prepayment-amount-info"></app-alert>
+        <app-alert #prepaymentAmountError [display]="prepaymentAmountDisplay" type="danger" [alert]="prepaymentAmountMessage" name="prepayment-amount-danger"></app-alert>
+        <div class="form-group">
+          <label for="prepayment-frequency" class="col-md-5">
+            <fa-icon [icon]="faQuestionCircle" (click)="prepaymentFrequencyInfo.show()"></fa-icon>Prepayment Frequency: </label>
+          <select id="prepayment-frequency" class="col-md-7" formControlName="prepaymentFrequency" required>
+            <option *ngFor="let frequency of prepaymentFrequencies" [value]="frequency">{{frequency}}</option>
+          </select>
+        </div>
+        <app-alert #prepaymentFrequencyInfo type="info" alert="{{INFO_PREPAYMENT_FREQUENCY}}" name="prepayment-frequency-info"></app-alert>
+        <div class="form-group">
+          <label for="start-with-payment" class="col-md-5">
+            <fa-icon [icon]="faQuestionCircle" (click)="startWithPaymentInfo.show()"></fa-icon>Start With Payment: </label>
+          <div class="input-group p-0 col-md-7">
+            <input id="start-with-payment" class="form-control" type="text" maxlength="4" formControlName="startWithPayment" required>
+          </div>
+          <app-alert #startWithPaymentInfo type="info" alert="{{INFO_PREPAYMENT_START_WITH}}" name="start-with-payment-info"></app-alert>
+          <app-alert #startWithPaymentError [display]="startWithErrorDisplay" type="danger" [alert]="startWithErrorMessage" name="start-with-payment-danger"></app-alert>
+        
+        </div>
+      </form>
+    </div>
+  </div>

@@ -1,1 +1,9 @@
-<p>alert works!</p>
+<div class="text-right" [hidden]="hide">
+    <div class="alert alert-{{type}}">
+        <div class="d-flex text-left">
+        <fa-icon [icon]="icon" class="col-0"></fa-icon>
+        <div name="alert-content" class="col-12">{{ alert }}</div>
+        </div>
+        <button type="button" class="btn btn-light" (click)="hide = true">close</button>
+    </div>
+</div>

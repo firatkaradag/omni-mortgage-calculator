@@ -1,4 +1,7 @@
+import { CurrencyPipe } from '@angular/common';
+import { AlertStubComponent } from 'src/app/__mocks__';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder } from '@angular/forms';
 
 import { PaymentPlanComponent } from './payment-plan.component';
 
@@ -8,7 +11,8 @@ describe('PaymentPlanComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PaymentPlanComponent ]
+      declarations: [ PaymentPlanComponent, AlertStubComponent ],
+      providers: [CurrencyPipe, FormBuilder]
     })
     .compileComponents();
   });
